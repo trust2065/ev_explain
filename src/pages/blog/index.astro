@@ -3,9 +3,12 @@ import { getCollection } from 'astro:content';
 import LuxuryLayout from '../../layouts/LuxuryLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog')).sort((a, b) => {
+	const orderA = a.data.sortOrder ?? 999;
+	const orderB = b.data.sortOrder ?? 999;
+	if (orderA !== orderB) return orderA - orderB;
+	return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+});
 ---
 
 <LuxuryLayout title="所有文章 | EV EXPLAIN" description="探索完整的電動車知識庫">
@@ -21,6 +24,7 @@ const posts = (await getCollection('blog')).sort(
 						category={post.data.category || '知識庫'}
 						title={post.data.title}
 						href={`/blog/${post.id}/`}
+						heroImage={post.data.heroImage}
 					/>
 				))
 			}

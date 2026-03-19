@@ -2,7 +2,8 @@
 title: '如何正確使用 Kia i-Pedal 單踏板模式'
 description: '操作邏輯、優點與日常駕駛建議，讓你享受更輕鬆、更節能的電驅駕駛體驗。'
 pubDate: 'Mar 19 2026'
-heroImage: '../../assets/blog-placeholder-5.jpg'
+sortOrder: 3
+heroImage: '../../assets/i_pedal.png'
 ---
 
 日常駕駛技巧分享。

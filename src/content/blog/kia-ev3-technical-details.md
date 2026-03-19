@@ -2,7 +2,8 @@
 title: 'Kia EV3 技術細節'
 description: '深入了解 Kia EV3 的電池技術、底盤架構及熱管理系統。'
 pubDate: 'Mar 19 2026'
-heroImage: '../../assets/blog-placeholder-2.jpg'
+sortOrder: 10
+heroImage: '../../assets/ev3_indepth.png'
 ---
 
 Kia EV3 的技術重點，包含電池技術、底盤架構及熱管理系統。

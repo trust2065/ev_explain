@@ -2,7 +2,8 @@
 title: 'Kia Connect 手機聯網功能介紹'
 description: '介紹 Kia Connect 遠端控車功能。'
 pubDate: 'Mar 19 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+sortOrder: 4
+heroImage: '../../assets/phone_car.png'
 ---
 
 Kia Connect 是 Kia 的手機聯網服務，包含遠端控車與狀態監控等功能。

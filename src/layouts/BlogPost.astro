@@ -10,7 +10,7 @@ const { title, description, pubDate, updatedDate, heroImage, category } = Astro.
 
 <LuxuryLayout title={`${title} | EV EXPLAIN`} description={description}>
 	<article class="article-content">
-		{heroImage && <img class="hero-image" width={1020} height={510} src={heroImage} alt="" />}
+		{heroImage && <img class="hero-image" width={1020} height={510} src={typeof heroImage === 'string' ? heroImage : heroImage.src} alt="" />}
 		<div class="prose">
 			<header class="article-header">
 				<div class="meta">
@@ -47,7 +47,7 @@ const { title, description, pubDate, updatedDate, heroImage, category } = Astro.
 	}
 	.meta {
 		font-family: var(--font-sans);
-		font-size: 12px;
+		font-size: 14px;
 		color: var(--text-tertiary);
 		display: flex;
 		align-items: center;

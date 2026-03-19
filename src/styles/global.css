@@ -10,8 +10,8 @@
 	--accent-gold: #C9A962;
 	--accent-gold-alpha: rgba(201, 169, 98, 0.4);
 	--text-primary: #FFFFFF;
-	--text-secondary: #848484;
-	--text-tertiary: #6A6A6A;
+	--text-secondary: #BCBCBC;
+	--text-tertiary: #8C8C8C;
 	--border-color: #2A2A2A;
 	
 	--font-serif: 'Cormorant Garamond', serif;
@@ -39,7 +39,7 @@ body {
 	text-align: left;
 	background-color: var(--bg-primary);
 	color: var(--text-secondary);
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 1.6;
 	overflow-x: hidden;
 }
@@ -101,6 +101,47 @@ input {
 }
 table {
 	width: 100%;
+	border-collapse: collapse;
+	margin: 32px 0;
+	font-size: 16px; /* Slightly smaller for tables */
+	border: 1px solid var(--border-color);
+	background-color: var(--bg-surface);
+	border-radius: 12px;
+	overflow: hidden;
+	line-height: 1.5;
+}
+
+th, td {
+	padding: 16px 20px;
+	text-align: left;
+	border: 1px solid var(--border-color);
+	vertical-align: top;
+}
+
+th {
+	background-color: rgba(201, 169, 98, 0.08);
+	color: var(--accent-gold);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 13px;
+	letter-spacing: 0.1em;
+	border-bottom: 2px solid var(--border-color);
+}
+
+tr:nth-child(even) {
+	background-color: rgba(255, 255, 255, 0.01);
+}
+
+tr:hover {
+	background-color: rgba(201, 169, 98, 0.03);
+}
+
+@media (max-width: 720px) {
+	table {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
 }
 img {
 	max-width: 100%;
@@ -131,7 +172,7 @@ hr {
 }
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 20px;
 	}
 	main {
 		padding: 1em;

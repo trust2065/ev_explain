@@ -2,6 +2,8 @@
 title: 'Hey Kia 語音助理使用指南'
 description: 'Kia EV3 原生語音助理功能教學與常用英文指令範例。'
 pubDate: 'Mar 19 2026'
+sortOrder: 2
+heroImage: '../../assets/hey_kia.png'
 ---
 
 「Hey Kia」是 Kia 搭載 ccNC 系統（如 EV3）的原生語音助理，旨在讓駕駛在不分心的情況下控制車輛。
