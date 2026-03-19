@@ -8,12 +8,20 @@ heroImage: '../../assets/blog-placeholder-5.jpg'
 日常駕駛技巧分享。
 
 ## 建議模式
-- 日常用 **Auto Mode** 即可。
-- 高速公路推薦開啟 **Highway Driving Assist**。
-- 山路可以嘗試 **Level 2-3** 動能回收。
-- **冰雪路面請勿開啟**。
-- 倒車也可以用 依照使用習慣可以開啟/關閉動能回收
 
+*   日常使用 **Auto Mode** 即可。
+*   高速公路推薦開啟 **Highway Driving Assist (HDA)**。
+*   山路可以嘗試 **Level 2-3** 動能回收頻率。
+*   **冰雪路面請勿開啟**。
+*   **倒車習慣**：亦可依個人習慣設定開啟或關閉動能回收。
 
 ## i-Pedal 啟動方式
-在動能回收等級為 **Level 3** 的狀態下，撥動左側方向盤撥片即可開啟, 儀表板會顯示「i-Pedal」字樣。
+
+在動能回收等級為 **Level 3** 的狀態下，向左撥動方向盤撥片不放即可開啟，儀表板會顯示「i-Pedal」字樣。
+
+## 如何啟用 HDA
+
+1. 進入選單設定：首先確認功能已在系統中勾選。路徑為：設定 (Settings) > 車輛 (Vehicle) > 駕駛輔助 (Driver Assistance) > 行駛便利性 (Driving Convenience) > 勾選 Highway Driving Assist。
+2. 駛入支援路段：HDA 僅能在導航系統認定的高速公路或快速道路上使用。當你進入這些路段時，系統會自動準備就緒。
+3. 按下按鈕：按下方向盤右側的 Driving Assist 按鈕（通常是一個方向盤圖示或車輛巡航圖示）。
+4. 開啟 Smart Cruise Control (SCC)：同時確保啟用了智慧巡航控制。當系統偵測到你正在符合條件的高速公路上行駛時，儀表板上會出現「HDA」的圖示。
