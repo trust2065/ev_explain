@@ -1,0 +1,79 @@
+---
+import LuxuryLayout from '../layouts/LuxuryLayout.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import Search from '../components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const featuredPost = posts.find(p => p.data.featured) || posts[0];
+const otherPosts = posts.filter(p => !p.data.featured && p.id !== featuredPost?.id).slice(0, 2);
+---
+
+<LuxuryLayout>
+	<header class="home-header">
+		<h1 class="page-title">電動車知識庫</h1>
+		<div class="search-container">
+			<Search />
+		</div>
+	</header>
+
+	<section class="featured-section">
+		{featuredPost && (
+			<FeaturedPost 
+				category={featuredPost.data.category || '精選文章'}
+				title={featuredPost.data.title}
+				description={featuredPost.data.description}
+				href={`/blog/${featuredPost.id}/`}
+			/>
+		)}
+	</section>
+
+	<section class="grid-section">
+		<div class="article-grid">
+			{otherPosts.map(post => (
+				<ArticleCard 
+					category={post.data.category || '知識庫'}
+					title={post.data.title}
+					href={`/blog/${post.id}/`}
+				/>
+			))}
+		</div>
+	</section>
+</LuxuryLayout>
+
+<style>
+	.home-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 48px;
+	}
+	.page-title {
+		font-size: 48px;
+	}
+	.search-bar {
+		width: 400px;
+		height: 48px;
+		background: var(--bg-surface);
+		border: 1px solid var(--accent-gold-alpha);
+		display: flex;
+		align-items: center;
+		padding: 0 16px;
+		gap: 12px;
+		cursor: text;
+	}
+	.search-placeholder {
+		font-family: var(--font-sans);
+		font-size: 14px;
+		color: var(--text-tertiary);
+	}
+	.featured-section {
+		margin-bottom: 48px;
+	}
+	.article-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+</style>

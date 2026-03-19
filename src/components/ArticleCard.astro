@@ -1,0 +1,49 @@
+---
+interface Props {
+	category: string;
+	title: string;
+	href: string;
+}
+
+const { category, title, href } = Astro.props;
+---
+
+<a href={href} class="article-card">
+	<div class="content">
+		<span class="category">{category}</span>
+		<h3 class="title">{title}</h3>
+	</div>
+</a>
+
+<style>
+	.article-card {
+		display: block;
+		height: 200px;
+		background: var(--bg-surface);
+		border: 1px solid var(--border-color);
+		text-decoration: none;
+		padding: 28px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		transition: all 0.3s ease;
+	}
+	.article-card:hover {
+		border-color: var(--accent-gold-alpha);
+		transform: translateY(-2px);
+	}
+	.category {
+		font-family: var(--font-sans);
+		font-size: 10px;
+		font-weight: 500;
+		color: var(--accent-gold);
+		margin-bottom: 16px;
+		display: block;
+	}
+	.title {
+		font-family: var(--font-serif);
+		font-size: 24px;
+		font-weight: 500;
+		color: var(--text-primary);
+	}
+</style>

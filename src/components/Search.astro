@@ -1,0 +1,48 @@
+<div id="search" class="search-bar">
+	<span class="search-icon">🔍</span>
+	<input type="text" id="search-input" placeholder="搜尋 EV 知識..." aria-label="Search" />
+</div>
+
+<style>
+	.search-bar {
+		width: 400px;
+		height: 48px;
+		background: var(--bg-surface);
+		border: 1px solid var(--accent-gold-alpha);
+		display: flex;
+		align-items: center;
+		padding: 0 16px;
+		gap: 12px;
+	}
+	.search-icon {
+		color: var(--accent-gold);
+	}
+	#search-input {
+		background: transparent;
+		border: none;
+		outline: none;
+		color: var(--text-primary);
+		font-family: var(--font-sans);
+		font-size: 14px;
+		width: 100%;
+	}
+	#search-input::placeholder {
+		color: var(--text-tertiary);
+	}
+</style>
+
+<script is:inline>
+	// Pagefind integration logic
+	window.addEventListener('DOMContentLoaded', async (event) => {
+		try {
+			const pagefind = await import("/pagefind/pagefind.js");
+			const input = document.querySelector('#search-input');
+			input?.addEventListener('input', async (e) => {
+				const search = await pagefind.search(e.target.value);
+				console.log(search.results);
+			});
+		} catch (e) {
+			console.log("Pagefind not found (normal in dev)");
+		}
+	});
+</script>

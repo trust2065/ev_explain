@@ -1,0 +1,38 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+export interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<div class="app-container">
+			<Sidebar />
+			<main class="content-area">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+
+<style>
+	.app-container {
+		display: flex;
+		min-height: 100vh;
+	}
+	.content-area {
+		flex: 1;
+		padding: 40px 56px;
+	}
+</style>

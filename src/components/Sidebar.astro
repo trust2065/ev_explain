@@ -1,0 +1,82 @@
+---
+const navItems = [
+	{ label: '首頁', icon: 'layout-dashboard', href: '/', active: true },
+	{ label: '文章庫', icon: 'file-text', href: '/blog', active: false },
+];
+---
+
+<aside class="sidebar">
+	<div class="logo-area">
+		<span class="logo-mark">EV</span>
+		<span class="logo-text">EXPLAIN</span>
+	</div>
+
+	<nav class="navigation">
+		{navItems.map((item) => (
+			<a href={item.href} class:list={['nav-item', { active: item.active }]}>
+				<span class="icon">{/* Icon Placeholder - will use Lucide if integrated, or simple SVG */}</span>
+				{item.label}
+			</a>
+		))}
+	</nav>
+</aside>
+
+<style>
+	.sidebar {
+		width: 280px;
+		height: 100vh;
+		position: sticky;
+		top: 0;
+		background: var(--bg-primary);
+		border-right: 1px solid var(--border-color);
+		padding: 40px 28px;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+	.logo-area {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+	.logo-mark {
+		font-family: var(--font-serif);
+		font-size: 18px;
+		font-weight: 600;
+		color: var(--accent-gold);
+	}
+	.logo-text {
+		font-family: var(--font-sans);
+		font-size: 16px;
+		font-weight: 500;
+		color: var(--text-primary);
+		letter-spacing: 3px;
+	}
+	.navigation {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+	.nav-item {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 14px 0;
+		text-decoration: none;
+		font-family: var(--font-sans);
+		font-size: 14px;
+		font-weight: 400;
+		color: var(--text-secondary);
+		transition: color 0.2s ease;
+	}
+	.nav-item.active {
+		color: var(--text-primary);
+		font-weight: 500;
+	}
+	.nav-item.active .icon {
+		color: var(--accent-gold);
+	}
+	.nav-item:hover {
+		color: var(--text-primary);
+	}
+</style>

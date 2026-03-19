@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import LuxuryLayout from './LuxuryLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, category } = Astro.props;
+---
+
+<LuxuryLayout title={`${title} | EV EXPLAIN`} description={description}>
+	<article class="article-content">
+		{heroImage && <img class="hero-image" width={1020} height={510} src={heroImage} alt="" />}
+		<div class="prose">
+			<header class="article-header">
+				<div class="meta">
+					<span class="category">{category}</span>
+					<span class="divider">/</span>
+					<FormattedDate date={pubDate} />
+					{updatedDate && (
+						<span class="last-updated">
+							(更新於 <FormattedDate date={updatedDate} />)
+						</span>
+					)}
+				</div>
+				<h1 class="title">{title}</h1>
+				<hr class="luxury-hr" />
+			</header>
+			<slot />
+		</div>
+	</article>
+</LuxuryLayout>
+
+<style is:global>
+	.article-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.hero-image {
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--border-color);
+		margin-bottom: 40px;
+	}
+	.article-header {
+		margin-bottom: 48px;
+	}
+	.meta {
+		font-family: var(--font-sans);
+		font-size: 12px;
+		color: var(--text-tertiary);
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: 16px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+	.category {
+		color: var(--accent-gold);
+		font-weight: 500;
+	}
+	.title {
+		font-size: 48px;
+		margin-bottom: 24px;
+	}
+	.luxury-hr {
+		border: none;
+		border-top: 1px solid var(--border-color);
+		margin: 32px 0;
+	}
+	/* Prose styling */
+	.prose {
+		color: var(--text-secondary);
+		line-height: 1.8;
+		font-family: var(--font-sans);
+	}
+	.prose h2, .prose h3 {
+		margin-top: 40px;
+		margin-bottom: 20px;
+		color: var(--text-primary);
+	}
+	.prose p {
+		margin-bottom: 24px;
+	}
+	.prose strong {
+		color: var(--text-primary);
+	}
+</style>

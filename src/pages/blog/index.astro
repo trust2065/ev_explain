@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import LuxuryLayout from '../../layouts/LuxuryLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<LuxuryLayout title="所有文章 | EV EXPLAIN" description="探索完整的電動車知識庫">
+	<header class="blog-header">
+		<h1 class="page-title">文章庫</h1>
+	</header>
+
+	<section class="grid-section">
+		<div class="article-grid">
+			{
+				posts.map((post) => (
+					<ArticleCard 
+						category={post.data.category || '知識庫'}
+						title={post.data.title}
+						href={`/blog/${post.id}/`}
+					/>
+				))
+			}
+		</div>
+	</section>
+</LuxuryLayout>
+
+<style>
+	.blog-header {
+		margin-bottom: 48px;
+	}
+	.page-title {
+		font-size: 48px;
+	}
+	.article-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+</style>
