@@ -25,7 +25,7 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 					<ArticleCard 
 						category={post.data.category || '知識庫'}
 						title={post.data.title}
-						href={`/blog/${post.id}/`}
+						href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
 						heroImage={post.data.heroImage}
 					/>
 				))

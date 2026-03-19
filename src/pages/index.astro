@@ -28,7 +28,7 @@ const otherPosts = posts.slice(1);
 				category={featuredPost.data.category || '精選文章'}
 				title={featuredPost.data.title}
 				description={featuredPost.data.description}
-				href={`/blog/${featuredPost.id}/`}
+				href={`${import.meta.env.BASE_URL}blog/${featuredPost.id}/`}
 				heroImage={featuredPost.data.heroImage}
 			/>
 		)}
@@ -40,7 +40,7 @@ const otherPosts = posts.slice(1);
 				<ArticleCard 
 					category={post.data.category || '知識庫'}
 					title={post.data.title}
-					href={`/blog/${post.id}/`}
+					href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
 					heroImage={post.data.heroImage}
 				/>
 			))}
