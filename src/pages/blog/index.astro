@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import LuxuryLayout from '../../layouts/LuxuryLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import homeBg from '../../assets/ev3_indepth.png';
 
 const posts = (await getCollection('blog')).sort((a, b) => {
 	const orderA = a.data.sortOrder ?? 999;
@@ -12,6 +13,7 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 ---
 
 <LuxuryLayout title="所有文章 | EV EXPLAIN" description="探索完整的電動車知識庫">
+	<div class="home-bg" style={`background-image: url(${homeBg.src})`}></div>
 	<header class="blog-header">
 		<h1 class="page-title">文章庫</h1>
 	</header>
@@ -33,6 +35,18 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 </LuxuryLayout>
 
 <style>
+	.home-bg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		opacity: 0.05;
+		z-index: -1;
+		pointer-events: none;
+	}
 	.blog-header {
 		margin-bottom: 48px;
 	}

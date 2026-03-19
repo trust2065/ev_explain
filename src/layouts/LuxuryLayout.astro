@@ -33,6 +33,12 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 	}
 	.content-area {
 		flex: 1;
-		padding: 40px 56px;
+		padding: 64px 80px;
+		overflow-y: auto;
+	}
+	@media (max-width: 1024px) {
+		.content-area {
+			padding: 40px 32px;
+		}
 	}
 </style>

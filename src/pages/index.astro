@@ -4,10 +4,14 @@ import FeaturedPost from '../components/FeaturedPost.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import Search from '../components/Search.astro';
 import { getCollection } from 'astro:content';
+import homeBg from '../assets/ev3_indepth.png';
 
-const posts = await getCollection('blog');
-const featuredPost = posts.find(p => p.data.featured) || posts[0];
-const otherPosts = posts.filter(p => !p.data.featured && p.id !== featuredPost?.id).slice(0, 2);
+const allPosts = await getCollection('blog');
+const selectedIds = ['charging-guide', 'hey-kia', 'how-to-use-i-pedal', 'kia-connect-connectivity'];
+const posts = selectedIds.map(id => allPosts.find(p => p.id === id)).filter(Boolean);
+
+const featuredPost = posts[0];
+const otherPosts = posts.slice(1);
 ---
 
 <LuxuryLayout>
@@ -25,6 +29,7 @@ const otherPosts = posts.filter(p => !p.data.featured && p.id !== featuredPost?.
 				title={featuredPost.data.title}
 				description={featuredPost.data.description}
 				href={`/blog/${featuredPost.id}/`}
+				heroImage={featuredPost.data.heroImage}
 			/>
 		)}
 	</section>
@@ -36,6 +41,7 @@ const otherPosts = posts.filter(p => !p.data.featured && p.id !== featuredPost?.
 					category={post.data.category || '知識庫'}
 					title={post.data.title}
 					href={`/blog/${post.id}/`}
+					heroImage={post.data.heroImage}
 				/>
 			))}
 		</div>
@@ -43,6 +49,18 @@ const otherPosts = posts.filter(p => !p.data.featured && p.id !== featuredPost?.
 </LuxuryLayout>
 
 <style>
+	.home-bg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		opacity: 0.05;
+		z-index: -1;
+		pointer-events: none;
+	}
 	.home-header {
 		display: flex;
 		justify-content: space-between;
@@ -73,7 +91,7 @@ const otherPosts = posts.filter(p => !p.data.featured && p.id !== featuredPost?.
 	}
 	.article-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
 	}
 </style>
