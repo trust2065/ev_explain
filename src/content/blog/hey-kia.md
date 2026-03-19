@@ -11,7 +11,7 @@ heroImage: '../../assets/hey_kia.png'
 以下是它能執行的主要功能與範例指令：
 
 ### 1. 車輛舒適控制
-*   **空調與溫度**：「Set temperature to 23 degrees」（設定溫度至 23 度）、「I'm cold」（我好冷，系統會自動調高溫度）。
+*   **冷氣與溫度**：「Set temperature to 23 degrees」（設定溫度至 23 度）、「I'm cold」（我好冷，系統會自動調高溫度）。
 *   **座椅與硬體**：「Turn on steering wheel heater」（開啟方向盤加熱）、「Open all windows」（打開所有車窗）、「Turn on seat ventilation」（開啟座椅通風）。
 
 ### 2. 導航與路況
@@ -33,6 +33,6 @@ heroImage: '../../assets/hey_kia.png'
 
 方向盤快捷鍵：
 
-短按語音鍵：喚醒原廠的 Hey Kia（處理車輛硬體，如車窗、空調）。
+短按語音鍵：喚醒原廠的 Hey Kia（處理車輛硬體，如車窗、冷氣）。
 
 長按語音鍵：喚醒手機的 Siri 或 Google 助理（處理中文導航、Line 訊息、中文音樂）。
