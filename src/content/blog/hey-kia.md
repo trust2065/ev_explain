@@ -30,26 +30,6 @@ heroImage: '../../assets/hey_kia.png'
 ### ⚠️ 針對澳洲版 EV3 的關鍵限制
 **語言限制**：澳洲規格的「Hey Kia」原生系統目前僅支援英文指令。它無法辨識中文語音指令。
 
----
-
-### 💡 常用指令範例表
-
-| 類別 | 英文指令 (請說...) | 功能說明 (中文) |
-| :--- | :--- | :--- |
-| **空調與舒適** | Set temperature to 23 degrees | 將空調溫度設定為 23 度 |
-| | I'm cold / I'm hot | 系統會自動調升或調降溫度 |
-| | Turn on steering wheel heater | 開啟方向盤加熱功能 |
-| | Turn on seat ventilation | 開啟座椅通風 (涼爽) |
-| **導航與電力** | Find charging stations | 搜尋附近的電動車充電站 |
-| | Go home / Go to work | 導航回住家或公司 (需先在系統設定) |
-| | How much range is left? | 詢問目前電池還能跑多少公里 |
-| | Cancel navigation | 取消目前的導航行程 |
-| **硬體控制** | Open all windows | 打開車上所有的車窗 |
-| | Open / Close the trunk | 開啟或關閉後車廂 (感應式尾門) |
-| | Open the sunroof | 打開天窗 |
-| **媒體與通訊** | Play FM 104.1 | 切換至特定的廣播頻率 |
-| | Call [聯絡人名稱] | 撥打電話給指定聯絡人 |
-| | What time is it? | 詢問目前時間 |
 
 方向盤快捷鍵：
 

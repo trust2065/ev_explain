@@ -20,7 +20,7 @@ heroImage: '../../assets/i_pedal.png'
 
 在動能回收等級為 **Level 3** 的狀態下，向左撥動方向盤撥片不放即可開啟，儀表板會顯示「i-Pedal」字樣。
 
-## 如何啟用 HDA
+## 如何啟用高速公路輔助系統 HDA
 
 1. 進入選單設定：首先確認功能已在系統中勾選。路徑為：設定 (Settings) > 車輛 (Vehicle) > 駕駛輔助 (Driver Assistance) > 行駛便利性 (Driving Convenience) > 勾選 Highway Driving Assist。
 2. 駛入支援路段：HDA 僅能在導航系統認定的高速公路或快速道路上使用。當你進入這些路段時，系統會自動準備就緒。
