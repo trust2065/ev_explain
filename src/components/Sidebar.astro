@@ -1,7 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => {
+	const orderA = (a.data as any).sortOrder ?? 999;
+	const orderB = (b.data as any).sortOrder ?? 999;
+	if (orderA !== orderB) return orderA - orderB;
+	return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+});
+
+const { pathname } = Astro.url;
+
+const isHomePage = pathname === '/' || pathname === '/index.html';
+
 const navItems = [
-	{ label: '首頁', icon: 'layout-dashboard', href: '/', active: true },
-	{ label: '文章庫', icon: 'file-text', href: '/blog', active: false },
+	{ label: '首頁', icon: 'layout-dashboard', href: '/', active: isHomePage },
 ];
 ---
 
@@ -14,10 +27,22 @@ const navItems = [
 	<nav class="navigation">
 		{navItems.map((item) => (
 			<a href={item.href} class:list={['nav-item', { active: item.active }]}>
-				<span class="icon">{/* Icon Placeholder - will use Lucide if integrated, or simple SVG */}</span>
+				<span class="icon">{/* Icon Placeholder */}</span>
 				{item.label}
 			</a>
 		))}
+		
+		<div class="nav-section">
+			<span class="section-title">所有文章</span>
+			{sortedPosts.map((post) => (
+				<a 
+					href={`/blog/${post.id}/`} 
+					class:list={['nav-sub-item', { active: pathname === `/blog/${post.id}/` || pathname === `/blog/${post.id}` }]}
+				>
+					{post.data.title}
+				</a>
+			))}
+		</div>
 	</nav>
 </aside>
 
@@ -33,6 +58,7 @@ const navItems = [
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
+		overflow-y: auto;
 	}
 	.logo-area {
 		display: flex;
@@ -49,13 +75,6 @@ const navItems = [
 		width: 32px;
 		height: 32px;
 		object-fit: contain;
-	}
-	.logo-text {
-		font-family: var(--font-sans);
-		font-size: 18px;
-		font-weight: 500;
-		color: var(--text-primary);
-		letter-spacing: 3px;
 	}
 	.navigation {
 		display: flex;
@@ -83,5 +102,64 @@ const navItems = [
 	}
 	.nav-item:hover {
 		color: var(--text-primary);
+	}
+	.nav-section {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-top: 24px;
+	}
+	.section-title {
+		font-family: var(--font-sans);
+		font-size: 13px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: var(--text-tertiary);
+		padding-bottom: 8px;
+	}
+	.nav-sub-item {
+		display: block;
+		text-decoration: none;
+		font-family: var(--font-sans);
+		font-size: 15px;
+		font-weight: 400;
+		color: var(--text-secondary);
+		padding: 8px 0;
+		transition: all 0.2s ease;
+		line-height: 1.4;
+	}
+	.nav-sub-item:hover {
+		color: var(--text-primary);
+		transform: translateX(4px);
+	}
+	.nav-sub-item.active {
+		color: var(--accent-gold);
+		font-weight: 500;
+	}
+
+	@media (max-width: 1024px) {
+		.sidebar {
+			width: 100%;
+			height: auto;
+			position: relative;
+			border-right: none;
+			border-bottom: 1px solid var(--border-color);
+			padding: 20px 24px;
+			gap: 20px;
+		}
+		.nav-section {
+			display: none;
+		}
+		.navigation {
+			flex-direction: row;
+			gap: 20px;
+		}
+		.nav-item {
+			padding: 0;
+		}
+		.logo-area {
+			margin-bottom: 0;
+		}
 	}
 </style>

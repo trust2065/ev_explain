@@ -87,4 +87,21 @@ const bgUrl = heroImage ? (typeof heroImage === 'string' ? heroImage : heroImage
 		max-width: 700px;
 		line-height: 1.6;
 	}
+	@media (max-width: 1024px) {
+		.featured-post {
+			height: auto;
+			min-height: 400px;
+		}
+		.content {
+			position: relative;
+			padding: 32px 24px;
+			background: var(--bg-surface);
+		}
+		.title {
+			font-size: 32px;
+		}
+		.description {
+			font-size: 16px;
+		}
+	}
 </style>
