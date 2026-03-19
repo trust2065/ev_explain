@@ -1,12 +1,12 @@
 ---
-title: 'Kia EV3 型號與規格：Air, Earth, GT-Line 差異'
+title: 'Kia EV3 型號與規格'
 description: 'EV3 三個等級（Air, Earth, GT-Line）的差異與配備升級詳細對照。'
 pubDate: 'Mar 19 2026'
 sortOrder: 10
 heroImage: '../../assets/ev3_trims.png'
 ---
 
-## Kia EV3 型號與規格詳細對照 (澳洲版)
+## 型號與規格詳細對照 (澳洲版)
 
 | 等級 | 主要配備與差異 | 電池容量 | 續航里程 (WLTP) |
 | :--- | :--- | :--- | :--- |
