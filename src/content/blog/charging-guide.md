@@ -6,8 +6,6 @@ sortOrder: 1
 heroImage: '../../assets/charging.png'
 ---
 
-# ⚡ 充電精華筆記
-
 ## 基本規格
 * **電池容量**：84.8 kWh (NMC 電池)
 * **AC 慢充**：Type 2 接頭 (需自備線材) | 上限 **11 kW**

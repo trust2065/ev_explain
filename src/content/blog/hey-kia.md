@@ -1,12 +1,10 @@
 ---
-title: 'Hey Kia 語音助理使用'
+title: 'Hey Kia 語音助理'
 description: 'Kia EV3 原生語音助理功能教學與常用英文指令範例。'
 pubDate: 'Mar 19 2026'
 sortOrder: 2
 heroImage: '../../assets/hey_kia.png'
 ---
-
-「Hey Kia」是 Kia 搭載 ccNC 系統（如 EV3）的原生語音助理，旨在讓駕駛在不分心的情況下控制車輛。
 
 以下是它能執行的主要功能與範例指令：
 
@@ -30,8 +28,7 @@ heroImage: '../../assets/hey_kia.png'
 ### ⚠️ 針對澳洲版 EV3 的關鍵限制
 **語言限制**：澳洲規格的「Hey Kia」原生系統目前僅支援英文指令。它無法辨識中文語音指令。
 
-
-方向盤快捷鍵：
+### 方向盤快捷鍵
 
 短按語音鍵：喚醒原廠的 Hey Kia（處理車輛硬體，如車窗、冷氣）。
 
