@@ -1,11 +1,18 @@
-<div id="search" class="search-bar">
-	<span class="search-icon">🔍</span>
-	<input type="text" id="search-input" placeholder="搜尋 EV 知識..." aria-label="Search" />
+<div id="search-container" class="search-wrapper">
+	<div class="search-bar">
+		<span class="search-icon">🔍</span>
+		<input type="text" id="search-input" placeholder="搜尋 EV 知識..." aria-label="Search" autocomplete="off" />
+	</div>
+	<div id="search-results" class="search-results"></div>
 </div>
 
 <style>
-	.search-bar {
+	.search-wrapper {
+		position: relative;
 		width: 400px;
+	}
+	.search-bar {
+		width: 100%;
 		height: 48px;
 		background: var(--bg-surface);
 		border: 1px solid var(--accent-gold-alpha);
@@ -29,20 +36,109 @@
 	#search-input::placeholder {
 		color: var(--text-tertiary);
 	}
+	.search-results {
+		position: absolute;
+		top: calc(100% + 8px);
+		left: 0;
+		right: 0;
+		background: var(--bg-surface);
+		border: 1px solid var(--accent-gold-alpha);
+		max-height: 400px;
+		overflow-y: auto;
+		z-index: 100;
+		display: none;
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+	}
+	.search-results.active {
+		display: block;
+	}
+	.search-item {
+		padding: 16px;
+		border-bottom: 1px solid var(--border-color);
+		cursor: pointer;
+		display: block;
+		text-decoration: none;
+	}
+	.search-item:last-child {
+		border-bottom: none;
+	}
+	.search-item:hover {
+		background: var(--bg-primary);
+	}
+	.search-item-title {
+		color: var(--accent-gold);
+		font-weight: 500;
+		font-size: 14px;
+		margin-bottom: 4px;
+	}
+	.search-item-excerpt {
+		color: var(--text-secondary);
+		font-size: 12px;
+	}
+	.search-no-results {
+		padding: 16px;
+		color: var(--text-tertiary);
+		font-size: 14px;
+		text-align: center;
+	}
 </style>
 
 <script is:inline>
-	// Pagefind integration logic
-	window.addEventListener('DOMContentLoaded', async (event) => {
+	window.addEventListener('DOMContentLoaded', async () => {
+		const input = document.querySelector('#search-input');
+		const resultsDiv = document.querySelector('#search-results');
+		let pagefind;
+
 		try {
-			const pagefind = await import("/pagefind/pagefind.js");
-			const input = document.querySelector('#search-input');
-			input?.addEventListener('input', async (e) => {
-				const search = await pagefind.search(e.target.value);
-				console.log(search.results);
-			});
+			// Initially try to load pagefind
+			pagefind = await import("/pagefind/pagefind.js");
 		} catch (e) {
 			console.log("Pagefind not found (normal in dev)");
 		}
+
+		input?.addEventListener('input', async (e) => {
+			const query = e.target.value;
+			if (!query) {
+				resultsDiv.classList.remove('active');
+				return;
+			}
+
+			if (!pagefind) {
+				resultsDiv.innerHTML = '<div class="search-no-results">搜尋功能需要先執行 <code>npm run build</code> 建立索引方可使用。</div>';
+				resultsDiv.classList.add('active');
+				return;
+			}
+
+			const search = await pagefind.search(query);
+			resultsDiv.classList.add('active');
+			
+			if (search.results.length === 0) {
+				resultsDiv.innerHTML = '<div class="search-no-results">找不到相關內容</div>';
+				return;
+			}
+
+			resultsDiv.innerHTML = '';
+			const results = await Promise.all(search.results.slice(0, 5).map(r => r.data()));
+			
+			results.forEach(data => {
+				const item = document.createElement('a');
+				item.className = 'search-item';
+				item.href = data.url;
+				
+				item.innerHTML = `
+					<div class="search-item-title">${data.meta.title}</div>
+					<div class="search-item-excerpt">${data.excerpt}</div>
+				`;
+				resultsDiv.appendChild(item);
+			});
+		});
+
+		// Close search results when clicking outside
+		document.addEventListener('click', (e) => {
+			if (!document.querySelector('#search-container').contains(e.target)) {
+				resultsDiv.classList.remove('active');
+			}
+		});
 	});
 </script>
+
