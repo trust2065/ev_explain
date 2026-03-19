@@ -1,5 +1,5 @@
 ---
-title: 'Hey Kia 語音助理使用指南'
+title: 'Hey Kia 語音助理使用'
 description: 'Kia EV3 原生語音助理功能教學與常用英文指令範例。'
 pubDate: 'Mar 19 2026'
 sortOrder: 2

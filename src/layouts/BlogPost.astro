@@ -8,7 +8,7 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage, category } = Astro.props;
 ---
 
-<LuxuryLayout title={`${title} | EV EXPLAIN`} description={description}>
+<LuxuryLayout title={`${title} | EV3 EXPLAIN`} description={description}>
 	<article class="article-content">
 		{heroImage && <div class="home-bg" style={`background-image: url(${typeof heroImage === 'string' ? heroImage : heroImage.src})`}></div>}
 		<div class="prose">

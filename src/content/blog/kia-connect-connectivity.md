@@ -1,5 +1,5 @@
 ---
-title: 'Kia Connect 手機聯網功能介紹'
+title: 'Kia Connect 連接手機'
 description: '介紹 Kia Connect 遠端控車功能。'
 pubDate: 'Mar 19 2026'
 sortOrder: 4

@@ -1,5 +1,5 @@
 ---
-title: '如何正確使用 Kia i-Pedal 單踏板模式'
+title: 'Kia 自動回充/高速公路輔助'
 description: '操作邏輯、優點與日常駕駛建議，讓你享受更輕鬆、更節能的電驅駕駛體驗。'
 pubDate: 'Mar 19 2026'
 sortOrder: 3
