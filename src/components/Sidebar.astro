@@ -12,9 +12,11 @@ const sortedPosts = posts.sort((a, b) => {
 const { pathname } = Astro.url;
 
 const isHomePage = pathname === '/' || pathname === '/index.html';
+const isBlogPage = pathname.startsWith('/blog');
 
 const navItems = [
 	{ label: '首頁', icon: 'layout-dashboard', href: '/', active: isHomePage },
+	{ label: '文章庫', icon: 'book-open', href: '/blog/', active: isBlogPage && pathname.endsWith('/blog/') },
 ];
 ---
 

@@ -56,6 +56,15 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 	.article-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 20px;
+		gap: 24px;
+	}
+	@media (max-width: 1024px) {
+		.article-grid {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+		.page-title {
+			font-size: 32px;
+		}
 	}
 </style>
