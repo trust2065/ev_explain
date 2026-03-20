@@ -2,11 +2,14 @@
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => {
-	const orderA = (a.data as any).sortOrder ?? 999;
-	const orderB = (b.data as any).sortOrder ?? 999;
+const sortedPosts = [...posts].sort((a, b) => {
+	const orderA = Number(a.data.sortOrder ?? 999);
+	const orderB = Number(b.data.sortOrder ?? 999);
+	
 	if (orderA !== orderB) return orderA - orderB;
-	return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+	
+	// If sortOrder is same, sort by date descending
+	return b.data.pubDate.getTime() - a.data.pubDate.getTime();
 });
 
 const { pathname } = Astro.url;
